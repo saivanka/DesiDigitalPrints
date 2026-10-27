@@ -37,7 +37,6 @@ export default function AdminDashboard({ onLogout }) {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isConnected, setIsConnected] = useState(false);
   const [stats, setStats] = useState(null);
-  const [error, setError] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     return localStorage.getItem('desi_theme') === 'dark';
   });

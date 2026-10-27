@@ -19,7 +19,7 @@ export default function OccasionManager({ occasions, onUpdate }) {
       const saved = await pb.create('occasions', { name: newOccasion });
       onUpdate([...occasions, saved]);
       setNewOccasion('');
-    } catch (err) {
+    } catch {
       toast.error('Failed to save to PocketBase. Ensure the "occasions" collection exists.');
     } finally {
       setIsSaving(false);

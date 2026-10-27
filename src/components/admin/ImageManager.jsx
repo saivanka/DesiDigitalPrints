@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import { Upload, Trash2, Image as ImageIcon, Plus, X, CheckCircle, Check, ChevronDown, Link as LinkIcon, Sparkles } from 'lucide-react';
 import { toast } from 'react-fox-toast';
 import { pb } from '../../lib/pb';
@@ -139,7 +140,7 @@ export default function ImageManager({ occasions, selectedOccasion, onSelectOcca
           occasion: selectedOccasion.id
         });
         successCount++;
-      } catch (err) {
+      } catch {
         console.warn('Batch item failed:', link);
       }
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Save, Trash2, ChevronLeft, Calendar, FileText, Sparkles, Check } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { toast } from 'react-fox-toast';
 import { pb } from '../../lib/pb';
 
