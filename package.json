@@ -1,7 +1,7 @@
 {
   "name": "desidigitalprints",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -38,5 +38,6 @@
     "postcss": "^8.5.8",
     "tailwindcss": "^3.4.19",
     "vite": "^5.4.21"
-  }
+  },
+  "description": "Desi Digital Prints \u2014 premium Indian wedding invitations, welcome boards and event designs. Browse the gallery and order on WhatsApp."
 }
