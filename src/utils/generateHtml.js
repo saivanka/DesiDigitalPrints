@@ -1,5 +1,5 @@
 export const generateHtml = (config) => {
-  const { title, groomName, brideName, date, venue, colorTheme, imageQuery, daisyTheme, fontFamily } = config;
+  const { title, groomName, brideName, date, venue, imageQuery, daisyTheme, fontFamily } = config;
   
   // Provide reliable image backup from lorempicsum if search is empty
   const imageUrl = imageQuery ? `https://loremflickr.com/1200/800/${encodeURIComponent(imageQuery)}` : 'https://images.unsplash.com/photo-1583089892943-e02e52f17004?q=80&w=2670&auto=format&fit=crop';
