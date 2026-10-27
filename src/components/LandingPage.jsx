@@ -9,37 +9,230 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { optimizeImageUrl } from '../utils/imageOptimizer';
 
-const CLOUD_IMAGES = [
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796441/27_adpvr9.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796441/01_oldv2p.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796440/23_h3aews.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796440/03_udbgle.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796440/02_br4upy.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/22_x8ad46.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/05_nulkj8.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/09_xyxntq.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/04_p0esji.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796438/06_xyppl9.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796438/07_j5qwq9.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796438/08_y8vfgk.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796437/110_ah4gzh.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796437/12_n6ho2s.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/15_x5nvjr.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796437/13_ibotmh.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/17_r9ncvc.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/14_ob6oul.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/16_hdcxdk.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/19_wwmr0b.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/18_zmpuln.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796435/21_sdibbb.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/31_t4xvgb.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/24_umfbsq.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796435/28_eztymb.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/30_kgeu27.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/32_miclrl.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/26_er8cfs.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/25_d1mgn7.png",
-  "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/33_vpdmwk.png"
+const CLOUD_DESIGNS = [
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796441/27_adpvr9.png",
+    name: "Wedding Welcome Board — Rahul & Melissa",
+    category: "Wedding",
+    occasion_id: "wedding",
+    keywords: "wedding shaadi marriage kalyanam wedding welcome board couple"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796441/01_oldv2p.png",
+    name: "Half Saree Ceremony Board — Swapna",
+    category: "Half Saree",
+    occasion_id: "half-saree",
+    keywords: "half saree langa voni puberty ceremony girl"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796440/23_h3aews.png",
+    name: "1st Birthday Board — Arjun",
+    category: "Birthday",
+    occasion_id: "birthday",
+    keywords: "birthday 1st birthday kids forest theme party"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796440/03_udbgle.png",
+    name: "Half Saree Ceremony Board — Saanvi",
+    category: "Half Saree",
+    occasion_id: "half-saree",
+    keywords: "half saree langa voni puberty ceremony girl lotus"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796440/02_br4upy.png",
+    name: "Housewarming Board — Konidela Family",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home peacock"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/22_x8ad46.png",
+    name: "Engagement Board — Tanish & Meera",
+    category: "Engagement",
+    occasion_id: "engagement",
+    keywords: "engagement nichayathartham ring ceremony couple floral"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/05_nulkj8.png",
+    name: "Housewarming Board — Arjun & Sarika",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home cow traditional"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/09_xyxntq.png",
+    name: "Gruha Pravesam Invitation — Dhruva & Chaitra",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home invitation"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796439/04_p0esji.png",
+    name: "Haldi Ceremony Board — Sivani",
+    category: "Haldi",
+    occasion_id: "haldi",
+    keywords: "haldi pithi turmeric ceremony bride yellow"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796438/06_xyppl9.png",
+    name: "Baby Shower Board — Nitha",
+    category: "Baby Shower",
+    occasion_id: "baby-shower",
+    keywords: "baby shower seemantham godh bharai mom to be sunflower"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796438/07_j5qwq9.png",
+    name: "Dhoti Ceremony Board — Vikram",
+    category: "Dhoti Ceremony",
+    occasion_id: "dhoti-ceremony",
+    keywords: "dhoti ceremony panchalu boy traditional"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796438/08_y8vfgk.png",
+    name: "Dhoti Ceremony Board — Aarush & Arnav",
+    category: "Dhoti Ceremony",
+    occasion_id: "dhoti-ceremony",
+    keywords: "dhoti ceremony panchalu boys traditional"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796437/110_ah4gzh.png",
+    name: "Baby Shower Board — Nila",
+    category: "Baby Shower",
+    occasion_id: "baby-shower",
+    keywords: "baby shower seemantham godh bharai butterfly moon"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796437/12_n6ho2s.png",
+    name: "Baby Shower Board — Vrushali",
+    category: "Baby Shower",
+    occasion_id: "baby-shower",
+    keywords: "baby shower seemantham godh bharai couple lotus"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/15_x5nvjr.png",
+    name: "1st Birthday Board — Archana",
+    category: "Birthday",
+    occasion_id: "birthday",
+    keywords: "birthday 1st birthday kids mermaid ocean theme party"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796437/13_ibotmh.png",
+    name: "1st Birthday Board — Harsha",
+    category: "Birthday",
+    occasion_id: "birthday",
+    keywords: "birthday 1st birthday kids forest theme family party"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/17_r9ncvc.png",
+    name: "Housewarming Board — Rakesh & Sruthi",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home couple"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/14_ob6oul.png",
+    name: "Kids Birthday Board — Akshay Turns 3",
+    category: "Birthday",
+    occasion_id: "birthday",
+    keywords: "birthday kids cartoon theme party 3rd birthday"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/16_hdcxdk.png",
+    name: "Sweet 16 Birthday Board — Nandini",
+    category: "Birthday",
+    occasion_id: "birthday",
+    keywords: "birthday sweet 16 sixteen party girl fairy"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/19_wwmr0b.png",
+    name: "Housewarming Board — Varun & Jyothika",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home couple"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796436/18_zmpuln.png",
+    name: "Gender Reveal Board — Karthik & Sree Priya",
+    category: "Baby Shower",
+    occasion_id: "baby-shower",
+    keywords: "baby shower gender reveal party seemantham couple"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796435/21_sdibbb.png",
+    name: "Housewarming Board — Radha & Krishna",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home cow lotus"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/31_t4xvgb.png",
+    name: "Birthday Board — Radha",
+    category: "Birthday",
+    occasion_id: "birthday",
+    keywords: "birthday girl traditional party"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/24_umfbsq.png",
+    name: "Half Saree Ceremony Board — Mounisha",
+    category: "Half Saree",
+    occasion_id: "half-saree",
+    keywords: "half saree langa voni puberty ceremony girl"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796435/28_eztymb.png",
+    name: "Telugu Gruhapravesam Board — Family Kalasam",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam telugu new home family kalasam"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/30_kgeu27.png",
+    name: "Telugu Gruhapravesam Invitation — Kalasam",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam telugu new home invitation kalasam"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/32_miclrl.png",
+    name: "Housewarming Board — Annam",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home couple roses"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/26_er8cfs.png",
+    name: "Housewarming Board — Varun & Swapna",
+    category: "Housewarming",
+    occasion_id: "housewarming",
+    keywords: "housewarming gruhapravesam gruha pravesam new home cow lotus"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/25_d1mgn7.png",
+    name: "Wedding Ceremony Board — Rama & Sita",
+    category: "Wedding",
+    occasion_id: "wedding",
+    keywords: "wedding shaadi marriage kalyanam wedding ceremony couple"
+  },
+  {
+    url: "https://res.cloudinary.com/dlt9qkkev/image/upload/v1776796434/33_vpdmwk.png",
+    name: "Baby Shower Board — Sarayu",
+    category: "Baby Shower",
+    occasion_id: "baby-shower",
+    keywords: "baby shower seemantham godh bharai temple traditional"
+  },
+];
+
+// Built-in gallery categories — used when the PocketBase occasions list is
+// unavailable, so the category menu and filters always work.
+const FALLBACK_OCCASIONS = [
+  { id: 'wedding', name: 'Wedding' },
+  { id: 'housewarming', name: 'Housewarming' },
+  { id: 'engagement', name: 'Engagement' },
+  { id: 'haldi', name: 'Haldi' },
+  { id: 'half-saree', name: 'Half Saree' },
+  { id: 'dhoti-ceremony', name: 'Dhoti Ceremony' },
+  { id: 'baby-shower', name: 'Baby Shower' },
+  { id: 'birthday', name: 'Birthday' },
 ];
 
 
@@ -48,9 +241,9 @@ const WHATSAPP_NUMBER = '919030811329';
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const openWhatsApp = (message = '', activeOccasion = 'all') => {
-  let defaultMsg = 'Hi! I saw your portfolio and I\'m interested in your designs! 🎨';
+  let defaultMsg = 'Hi! I saw your portfolio and I\'m interested in your designs!';
   if (activeOccasion !== 'all' && !message) {
-    defaultMsg = `Hi! I'm interested in your ${activeOccasion} collection designs! 🎨`;
+    defaultMsg = `Hi! I'm interested in your ${activeOccasion} collection designs!`;
   }
 
   const finalMsg = message || defaultMsg;
@@ -264,7 +457,7 @@ const HeroSection = () => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true;
-      videoRef.current.play().catch(e => console.warn('[Video] Playback blocked by browser, waiting for user interaction...'));
+      videoRef.current.play().catch(() => console.warn('[Video] Playback blocked by browser, waiting for user interaction...'));
     }
   }, []);
 
@@ -377,7 +570,7 @@ const GoogleReviewsMarquee = () => {
   const Row = ({ items, reverse = false }) => (
     <div className="flex relative overflow-hidden py-4 -mx-4 sm:-mx-6">
       <div className={`flex gap-6 ${reverse ? 'animate-marquee-horizontal-reverse' : 'animate-marquee-horizontal'} hover:[animation-play-state:paused] whitespace-nowrap`}>
-        {[...items, ...items, ...items].map((review, idx) => (
+        {[...items, ...items].map((review, idx) => (
           <div 
             key={idx}
             className="w-[280px] sm:w-[320px] bg-white p-6 rounded-3xl shadow-sm border border-gray-100 shrink-0 flex flex-col gap-3"
@@ -588,6 +781,12 @@ const ProductCard = memo(({ item, onPreview }) => {
         )}
         {/* Subtle hover overlay for polish */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+      </div>
+      <div className="px-4 py-3">
+        <h3 className="text-sm font-bold text-gray-900 leading-snug line-clamp-2">{item.name || 'Premium Design'}</h3>
+        {item.category && (
+          <p className="text-[10px] font-black uppercase tracking-widest text-[#bf1e2e] mt-1">{item.category}</p>
+        )}
       </div>
     </div>
   );
@@ -810,7 +1009,7 @@ const WhatsAppBanner = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <button
-              onClick={() => openWhatsApp('Hi! I want to order a custom design for my event! 🎉')}
+              onClick={() => openWhatsApp('Hi! I want to order a custom design for my event!')}
               className="bg-white text-[#bf1e2e] font-black px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-all hover:scale-105 active:scale-95 uppercase tracking-tighter flex items-center justify-center gap-3"
             >
               <WhatsAppIcon className="w-6 h-6" />
@@ -830,7 +1029,53 @@ const WhatsAppBanner = () => {
   );
 };
 
-const Footer = ({ occasions, onSelect }) => (
+const LEGAL_CONTENT = {
+  privacy: {
+    title: 'Privacy Policy',
+    body: [
+      'Desi Digital Prints only collects the details you share with us to create your design — such as names, event dates and photos you send for custom artwork.',
+      'We use those details solely to design and deliver your order. We do not sell, rent or share your personal information with third parties.',
+      'Orders and enquiries happen over WhatsApp, so WhatsApp\'s own privacy policy also applies to those conversations.',
+      'To ask about or remove your information, message us on WhatsApp at +91 9030811329.'
+    ]
+  },
+  terms: {
+    title: 'Terms of Use',
+    body: [
+      'All designs are made to order and personalised with the details you provide. Please check spellings, names and dates carefully before approving a design — we deliver exactly what is approved.',
+      'Digital files are delivered electronically (no physical product is shipped unless separately agreed). Delivery timelines are confirmed on WhatsApp at the time of ordering.',
+      'Designs are for your personal event use. Please do not resell or redistribute our artwork as templates or stock.',
+      'Questions about an order? Message us on WhatsApp at +91 9030811329 — we reply 24/7.'
+    ]
+  }
+};
+
+const LegalModal = ({ kind, onClose }) => {
+  if (!kind) return null;
+  const content = LEGAL_CONTENT[kind];
+  return (
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
+      <div className="bg-white max-w-lg w-full rounded-3xl p-8 max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-start justify-between mb-4">
+          <h3 className="text-2xl font-black text-gray-900 tracking-tighter">{content.title}</h3>
+          <button onClick={onClose} className="p-2 text-gray-400 hover:text-gray-700" aria-label="Close">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="space-y-4">
+          {content.body.map((para, i) => (
+            <p key={i} className="text-sm text-gray-600 font-medium leading-relaxed">{para}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Footer = ({ occasions, onSelect }) => {
+  const [legalKind, setLegalKind] = useState(null);
+  return (
+  <>
   <footer className="bg-[#111] text-white pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 px-4 sm:px-6 md:px-8">
     <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12 border-b border-white/10 pb-12 sm:pb-16 md:pb-20">
       <div className="lg:col-span-2 space-y-6">
@@ -905,16 +1150,19 @@ const Footer = ({ occasions, onSelect }) => (
     <div className="container mx-auto pt-8 sm:pt-10 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
       <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-[10px] sm:text-[11px] font-bold text-gray-500 uppercase tracking-widest">
         <span>© 2026 DESI DIGITAL PRINTS</span>
-        <span className="hover:text-white cursor-pointer">PRIVACY POLICY</span>
-        <span className="hover:text-white cursor-pointer">TERMS OF USE</span>
+        <span onClick={() => setLegalKind('privacy')} className="hover:text-white cursor-pointer">PRIVACY POLICY</span>
+        <span onClick={() => setLegalKind('terms')} className="hover:text-white cursor-pointer">TERMS OF USE</span>
       </div>
       <div className="flex items-center gap-6 grayscale opacity-50">
         <CheckCircle className="w-8 h-8" />
         <span className="text-xs font-black uppercase tracking-tighter">Handcrafted with ❤️</span>
       </div>
     </div>
+    <LegalModal kind={legalKind} onClose={() => setLegalKind(null)} />
   </footer>
-);
+  </>
+  );
+};
 
 // --- Floating WhatsApp Button ---
 const FloatingWhatsApp = () => {
@@ -1061,7 +1309,7 @@ export default function LandingPage({ templates, onStart }) {
           pb.getFullList('images', { sort: '-created,id' })
         ]);
 
-        setOccasions(occData || []);
+        setOccasions(occData && occData.length ? occData : FALLBACK_OCCASIONS);
 
         const staticTemplates = (templates || []).map(t => {
           if (!t) return null;
@@ -1089,11 +1337,13 @@ export default function LandingPage({ templates, onStart }) {
           };
         }).filter(Boolean);
 
-        const formattedCloudImages = CLOUD_IMAGES.map((url, idx) => ({
+        const formattedCloudImages = CLOUD_DESIGNS.map((design, idx) => ({
           id: `cloud-${idx}`,
-          image_url: optimizeImageUrl(url),
-          name: `Premium Design ${idx + 1}`,
-          occasion_id: 'all'
+          image_url: optimizeImageUrl(design.url),
+          name: design.name,
+          category: design.category,
+          keywords: design.keywords,
+          occasion_id: design.occasion_id
         }));
 
         // Fisher-Yates shuffle — fresh random order on every page load
@@ -1137,7 +1387,7 @@ export default function LandingPage({ templates, onStart }) {
           });
         }
         sessionStorage.setItem('desi_pulse_counted', 'true');
-      } catch (err) {
+      } catch {
         console.warn('[Analytics] Pulse failed (Space might be initializing)');
       }
     };
@@ -1163,11 +1413,19 @@ export default function LandingPage({ templates, onStart }) {
     }
   };
 
-  const filteredImages = useMemo(() => images.filter(img => {
-    const matchesSearch = img.name?.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesOccasion = activeOccasion === 'all' || img.occasion_id === activeOccasion;
-    return matchesSearch && matchesOccasion;
-  }), [images, searchQuery, activeOccasion]);
+  const filteredImages = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    const activeOccasionName = occasions.find(o => o.id === activeOccasion)?.name?.toLowerCase();
+    return images.filter(img => {
+      const searchable = [img.name, img.category, img.keywords].filter(Boolean).join(' ').toLowerCase();
+      const matchesSearch = !query || searchable.includes(query);
+      const matchesOccasion = activeOccasion === 'all'
+        || img.occasion_id === activeOccasion
+        || (activeOccasionName && img.category?.toLowerCase() === activeOccasionName)
+        || (activeOccasionName && img.occasion_name?.toLowerCase() === activeOccasionName);
+      return matchesSearch && matchesOccasion;
+    });
+  }, [images, searchQuery, activeOccasion, occasions]);
 
   const displayedImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
   const hasMore = visibleCount < filteredImages.length;
