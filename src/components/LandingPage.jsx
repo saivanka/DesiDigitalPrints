@@ -428,11 +428,11 @@ const MainHeader = ({ searchQuery, setSearchQuery }) => {
 
 const NavigationBar = ({ occasions, activeOccasion, onSelect }) => {
   return (
-    <nav className="border border-gray-200 bg-white/80 backdrop-blur-md w-full rounded-2xl shadow-sm mb-10 overflow-x-auto hide-scrollbar">
-      <ul className="flex items-center justify-start lg:justify-center gap-4 sm:gap-6 lg:gap-14 py-3 px-4 text-[11px] sm:text-[12px] lg:text-[13px] font-bold text-gray-800 uppercase tracking-widest whitespace-nowrap min-w-max lg:min-w-0">
+    <nav className="border border-gray-200 bg-white/80 backdrop-blur-md w-full max-w-full rounded-2xl shadow-sm mb-10 overflow-x-auto lg:overflow-x-visible hide-scrollbar">
+      <ul className="flex min-w-max items-center justify-start gap-4 sm:gap-6 lg:min-w-0 lg:flex-wrap lg:justify-center lg:gap-x-7 lg:gap-y-2 xl:gap-x-10 2xl:gap-x-12 py-3 px-4 text-[11px] sm:text-[12px] lg:text-[13px] font-bold text-gray-800 uppercase tracking-widest whitespace-nowrap">
         <li
           onClick={() => onSelect({ id: 'all', name: 'All' })}
-          className={`cursor-pointer hover:text-[#bf1e2e] transition-all relative group py-1 ${activeOccasion === 'all' ? 'text-[#bf1e2e]' : ''}`}
+          className={`shrink-0 whitespace-nowrap cursor-pointer hover:text-[#bf1e2e] transition-all relative group py-1 ${activeOccasion === 'all' ? 'text-[#bf1e2e]' : ''}`}
         >
           All Designs
           <div className="absolute -bottom-[13px] left-0 w-full h-0.5 bg-[#bf1e2e] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
@@ -441,7 +441,7 @@ const NavigationBar = ({ occasions, activeOccasion, onSelect }) => {
           <li
             key={occ.id}
             onClick={() => onSelect(occ)}
-            className={`cursor-pointer hover:text-[#bf1e2e] transition-all relative group py-1 ${activeOccasion === occ.id ? 'text-[#bf1e2e]' : ''}`}
+            className={`shrink-0 whitespace-nowrap cursor-pointer hover:text-[#bf1e2e] transition-all relative group py-1 ${activeOccasion === occ.id ? 'text-[#bf1e2e]' : ''}`}
           >
             {occ.name}
             <div className={`absolute -bottom-[13px] left-0 w-full h-0.5 bg-[#bf1e2e] transition-transform origin-left ${activeOccasion === occ.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
@@ -1443,15 +1443,15 @@ export default function LandingPage({ templates, onStart }) {
         {/* Gallery Section */}
         <section id="gallery" ref={galleryRef} className="py-12 sm:py-16 md:py-20 bg-[#f9f9f9] scroll-mt-20">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="gallery-heading flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
-              <div className="space-y-2 sm:space-y-4">
+            <div className="gallery-heading flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
+              <div className="min-w-0 space-y-2 sm:space-y-4">
                 <div className="inline-block px-3 py-1 bg-[#bf1e2e]/10 text-[#bf1e2e] text-[10px] font-black uppercase tracking-widest rounded-full">My Portfolio</div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tighter leading-none">
+                <h2 className="max-w-full break-words text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tighter leading-none">
                   {activeOccasion === 'all' ? 'Featured Designs' : `${occasions.find(o => o.id === activeOccasion)?.name} Collection`}
                 </h2>
                 <p className="text-gray-400 text-xs sm:text-sm font-medium">Like a design? Tap to order via WhatsApp</p>
               </div>
-              <p className="text-gray-400 font-bold uppercase text-xs sm:text-sm tracking-widest">
+              <p className="shrink-0 whitespace-nowrap text-gray-400 font-bold uppercase text-xs sm:text-sm tracking-widest lg:pb-1">
                 {filteredImages.length} designs
               </p>
             </div>
